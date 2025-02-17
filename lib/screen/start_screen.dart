@@ -25,18 +25,12 @@ class _StartScreenState extends State<StartScreen> {
         centerTitle: true,
         backgroundColor: appAppBar,
       ),
-      body: Container(
-        height: double.infinity,
-        width: double.infinity,
-        color: spColorTTT,
+      backgroundColor: spColorTTT,
+      body: Center(
         child: SingleChildScrollView(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const SizedBox(
-                height: 30,
-              ),
-
               SizedBox(
                 height: 300,
                 width: 300,
@@ -128,7 +122,8 @@ class _StartScreenState extends State<StartScreen> {
                         ? "Player 2"
                         : player2Controller.text;
 
-                    Navigator.of(context).pushReplacement(_createRoute(HomeScreen(
+                    Navigator.of(context)
+                        .pushReplacement(_createRoute(HomeScreen(
                       player1,
                       player2,
                     )));

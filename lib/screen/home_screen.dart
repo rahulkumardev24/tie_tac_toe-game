@@ -34,58 +34,46 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     mqData = MediaQuery.of(context);
     return Scaffold(
-      /// ..................body................................//
-      body: Container(
-        width: double.infinity,
-        height: double.infinity,
-        color: spColorTTT,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-          const SizedBox(
-            height: 50,
-          ),
+      backgroundColor: spColorTTT,
 
+      /// ..................body................................//
+      body: Center(
+        child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
           /// player 1 part
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               Container(
-                  height: 50,
-                  width: 50,
+                  height: mqData!.size.height * 0.05,
+                  width: mqData!.size.height * 0.05,
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(8),
                       color: Colors.greenAccent),
-                  child: const Center(
-                      child: Text(
-                    "O",
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 30,
-                        fontFamily: "myBoxNew"),
+                  child: Center(
+                      child: Padding(
+                    padding: const EdgeInsets.all(4.0),
+                    child: Image.asset("assets/images/0icon.png"),
                   ))),
               Container(
-                  height: 50,
-                  width: 220,
+                  height: mqData!.size.height * 0.05,
+                  width: mqData!.size.width * 0.6,
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
                       border: Border.all(color: Colors.greenAccent, width: 1),
-                      boxShadow: const [
-                        BoxShadow(color: Colors.greenAccent, blurRadius: 10)
-                      ],
-                      color:
-                          oTurn ? Colors.orangeAccent.shade200 : Colors.white),
+                      color: oTurn
+                          ? spabTTT.withOpacity(0.8)
+                          : Colors.transparent),
                   child: Center(
                       child: Text(
                     widget.playerFirst,
                     style: const TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 30,
-                        fontFamily: "myBoxNew"),
+                        fontFamily: "myBox"),
                   ))),
               Container(
-                  height: 50,
-                  width: 50,
+                  height: mqData!.size.height * 0.05,
+                  width: mqData!.size.height * 0.05,
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(8),
                       border: Border.all(color: Colors.greenAccent, width: 1),
@@ -111,8 +99,9 @@ class _HomeScreenState extends State<HomeScreen> {
           /// ............box......................//
           SizedBox(
             height: mqData!.size.height * 0.5,
+            width: mqData!.size.height * 0.5,
             child: GridView.builder(
-              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+              padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 6),
               itemCount: 9,
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 3, crossAxisSpacing: 10, mainAxisSpacing: 10),
@@ -149,48 +138,42 @@ class _HomeScreenState extends State<HomeScreen> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                SizedBox(
-                  height: 70,
-                  width: 70,
-                  child: FloatingActionButton(
-                    onPressed: () {
-                      setState(() {
-                        _clearBoard();
-                      });
-                    },
-                    child: const Text(
-                      "Clear",
-                      style: TextStyle(fontFamily: "myBox", fontSize: 20),
-                    ),
+                FloatingActionButton(
+                  onPressed: () {
+                    setState(() {
+                      _clearBoard();
+                    });
+                  },
+                  child: const Text(
+                    "Clear",
+                    style: TextStyle(fontFamily: "myBox", fontSize: 20),
                   ),
                 ),
                 Container(
                     width: mqData!.size.width * 0.5,
-                    height: 70,
                     decoration: BoxDecoration(
                         color: Colors.blue.shade100.withOpacity(0.4),
                         borderRadius: BorderRadius.circular(12)),
                     child: Center(
-                        child: Text(
-                      resultDeclaration,
-                      style: const TextStyle(
-                          color: Colors.blueAccent,
-                          fontSize: 20,
-                          fontFamily: "myBoxNew"),
+                        child: Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 12.0),
+                      child: Text(
+                        resultDeclaration,
+                        style: const TextStyle(
+                            color: Colors.blueAccent,
+                            fontSize: 20,
+                            fontFamily: "myBoxNew"),
+                      ),
                     ))),
-                SizedBox(
-                  height: 70,
-                  width: 70,
-                  child: FloatingActionButton(
-                    onPressed: () {
-                      setState(() {
-                        _reStart();
-                      });
-                    },
-                    child: const Icon(
-                      Icons.restart_alt_outlined,
-                      size: 30,
-                    ),
+                FloatingActionButton(
+                  onPressed: () {
+                    setState(() {
+                      _reStart();
+                    });
+                  },
+                  child: const Icon(
+                    Icons.restart_alt_outlined,
+                    size: 30,
                   ),
                 ),
               ],
@@ -198,7 +181,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
 
           SizedBox(
-            height: mqData!.size.height * 0.01,
+            height: mqData!.size.height * 0.05,
           ),
 
           /// player 2 part
@@ -208,8 +191,8 @@ class _HomeScreenState extends State<HomeScreen> {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 Container(
-                    height: 50,
-                    width: 50,
+                    height: mqData!.size.height * 0.05,
+                    width: mqData!.size.height * 0.05,
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(8),
                         border: Border.all(color: Colors.greenAccent, width: 1),
@@ -226,41 +209,34 @@ class _HomeScreenState extends State<HomeScreen> {
                           fontFamily: "myBox"),
                     ))),
                 Container(
-                    height: 50,
-                    width: 220,
+                    height: mqData!.size.height * 0.05,
+                    width: mqData!.size.width * 0.6,
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
                         border: Border.all(color: Colors.greenAccent, width: 1),
-                        boxShadow: const [
-                          BoxShadow(color: Colors.greenAccent, blurRadius: 10)
-                        ],
-                        color: oTurn
-                            ? Colors.white
-                            : Colors.orangeAccent.shade200),
+                        color: oTurn ? Colors.transparent : boardSecond),
                     child: Center(
                         child: Text(
                       widget.playerSecond,
                       style: const TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 30,
-                          fontFamily: "myBoxNew"),
+                          fontFamily: "myBox"),
                     ))),
                 Container(
-                    height: 50,
-                    width: 50,
+                    height: mqData!.size.height * 0.05,
+                    width: mqData!.size.height * 0.05,
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(8),
                         color: Colors.greenAccent),
-                    child: const Center(
-                        child: Text(
-                      "X",
-                      style: TextStyle(fontSize: 30, fontFamily: "myBoxNew"),
-                    ))),
+                    child: Center(
+                      child: Padding(
+                        padding: const EdgeInsets.all(4.0),
+                        child: Image.asset("assets/images/xicon.webp"),
+                      ),
+                    )),
               ],
             ),
-          ),
-          const SizedBox(
-            height: 40,
           ),
         ]),
       ),

@@ -36,7 +36,7 @@ if (flutterVersionName == null) {
 }
 
 android {
-    namespace = "com.example.tic_tak_toe"
+    namespace = "com.appcreatordevrahul.tic_tak_toe"
     compileSdk = flutter.compileSdkVersion
     ndkVersion = flutter.ndkVersion
 
@@ -47,7 +47,7 @@ android {
 
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
-        applicationId "com.appcreatorrahul.tictaktoe"
+        applicationId "com.appcreatordevrahul.tictaktoe"
         // You can update the following values to match your application needs.
         // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-gradle-build-configuration.
         minSdk = flutter.minSdkVersion
@@ -58,10 +58,10 @@ android {
 
     signingConfigs {
         release {
-            storeFile file("C:/FLUTTER PROJECT/Real Project/tic_tak_toe/releaseKey.jks")
-            storePassword "123456"
-            keyAlias "key0"
-            keyPassword "123456"
+            storeFile file(keystoreProperties["storeFile"])
+            storePassword keystoreProperties["storePassword"]
+            keyAlias keystoreProperties["keyAlias"]
+            keyPassword keystoreProperties["keyPassword"]
         }
     }
     buildTypes {
